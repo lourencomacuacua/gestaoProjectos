@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{administrativo/fragments/layout}"> 
+<html lang="pt-br">
+
+  <head>
+    <title>Página Cadastro de contrato</title>
+  </head>
+  <body>			
+	    <section class="layout-content" layout:fragment="corpo">
+		    <!-- Mensagem de sucesso -->
+		    <div th:if="${message}" class="alert alert-success">
+		        <p th:text="${message}"></p>
+		    </div>
+		
+		    <div class="container">
+		        <form action="/salvarContrato" th:object="${contrato}" method="POST">
+		            <div class="form-group">
+		              
+		              <div class="row">
+		                <div class="col-md-2">
+		                  <label for="id" >ID:</label>
+		                  <input type="text" readonly="true" class="form-control" id="id"  th:field="*{id}">
+		                </div>
+		                </div>
+		                
+		                <div class="row">
+		                <div class="col-md-6">
+		                  <label >Nome contrato:</label>
+		                  <input required type="text" class="form-control" id="nome"  th:field="*{nome}">
+		                </div>
+		                </div>
+		                
+		                <div class="row">
+		                <div class="col-md-6">
+		                  <label >Data-Início:</label>
+		                  <input required type="date" class="form-control" id="dataInicio"  th:field="*{dataInicio}">
+		                </div>
+		                </div>
+		                
+		                <div class="row">
+		                <div class="col-md-6">
+		                  <label >Data-Expiração:</label>
+		                  <input required type="date" class="form-control" id="dataExpiracao"  th:field="*{dataExpiracao}">
+		                </div>
+		                </div>
+		                
+		                <div class="row">
+		                <div class="col-md-6">
+			              <label >Parceiro:</label>        
+			              <select th:field="*{parceiro}" class="form-control">
+			                <option th:each="dep : ${listaParceiros}" th:value="${dep.id}" th:text="${dep.nome}"> </option>  
+			              </select > 
+		
+		                </div>
+		                
+		                <div class="col-md-6">
+			              <label >Projecto:</label>        
+			              <select th:field="*{projecto}" class="form-control">
+			                <option th:each="dep : ${listaProjectos}" th:value="${dep.id}" th:text="${dep.nome}"> </option>  
+			              </select > 
+		
+		                </div>
+		
+		
+		
+		
+		              </div>
+		       
+		            </div>
+		
+			            <a><button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>Salvar</button></a>
+			            <a class="btn btn-danger" href="/listarContrato"><i class="fa-solid fa-list"></i>Listar Contratos</a>
+		
+		          </form>
+		
+		    </div>
+
+	    </section>
+</body>
+
+
+
+

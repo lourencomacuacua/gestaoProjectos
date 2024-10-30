@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{administrativo/fragments/layout}"> 
+<html lang="pt-br">
+
+  <head>
+    <title>Página Cadastro de parceiros</title>
+  </head>
+  <body>			
+	    <section class="layout-content" layout:fragment="corpo">
+    	    <!-- Mensagem de sucesso -->
+		    <div th:if="${message}" class="alert alert-success">
+		        <p th:text="${message}"></p>
+		    </div>
+		    <div class="container">
+		        <form action="/salvarParceiro" th:object="${parceiro}" method="POST">
+		            <div class="form-group">
+		              
+		              <div class="row">
+		                <div class="col-md-1">
+		                  <label for="id" >ID:</label>
+		                  <input type="text" readonly="true" class="form-control" id="id"  th:field="*{id}">
+		                </div>
+		               </div>
+		               
+		               <div class="row">
+		                <div class="col-md-6">
+		                  <label >Nome parceiro:</label>
+		                  <input required type="text" class="form-control" id="nome"  th:field="*{nome}">
+		                </div>
+		                
+		               </div>
+		               
+		               <div class="row"> 
+		                <div class="col-md-6">
+		                  <label >E-mail:</label>
+		                  <input required type="email" class="form-control" id="email"  th:field="*{email}">
+		                </div>
+						</div>
+						
+						<div class="row">
+		                <div class="col-md-6">
+		                  <label >Data de cadastro:</label>
+		                  <input required type="date" class="form-control" id="dataCadastro"  th:field="*{dataCadastro}">
+		                </div>
+		
+		
+		              </div>
+		       
+		            </div>
+		
+		            <a><button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>Salvar</button></a>
+		            <a class="btn btn-danger" href="/listarParceiro"><i class="fa-solid fa-list"></i>Listar Parceiros</a>
+
+		          </form>
+		
+		    </div>
+	    </section>
+</body>
+
+
+
+

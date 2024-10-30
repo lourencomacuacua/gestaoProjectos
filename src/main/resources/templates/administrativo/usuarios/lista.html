@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{administrativo/fragments/layout}"> 
+<html lang="pt-br">
+
+  <head>
+    <title>Página lista de usuários</title>
+  </head>
+  <body>			
+	    <section class="layout-content" layout:fragment="corpo">
+		    <div class="table-responsive">
+		    	<table class="table table-striped table-hover table-sm"  id="tabela">
+				<thead class="bg-primary" style="color:white">
+					<tr>
+						<td>ID</td>
+						<td>Nome</td>
+						<td>E-mail</td>
+						<td>Perfil</td>
+						<td>Opções</td>
+					</tr>
+		
+				</thead>
+				
+				
+				<tbody > 
+					<tr th:each="user: ${listaUsuarios}"><!--Percorer lista de users (as linhas da nossa tabela de user) como se fose um for( o user vai ser a entidade que esta na lista de user sendo que user tem os campos nome e sigal-->
+						<td th:text="${user.id}"></td>
+						<td th:text="${user.fullname}"></td>
+						<td th:text="${user.email}"></td>
+						<td th:text="${user.role}"></td>
+		
+						<td colspan="3">
+							<a th:href="@{/editarUsuario/{id} (id=${user.id})}"><i class="fa-solid fa-pen-to-square" style="color: #74C0FC;"></i> </a>
+		
+							
+		                                <!-- Modal para confirmação de remoção -->
+		                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" th:data-target="'#modal-warning-' + ${user.id}">
+		                                    <i class="fa-solid fa-trash-can" ></i>
+		                                </button>
+		                                <div class="modal fade" th:id="'modal-warning-' + ${user.id}" tabindex="-1" role="dialog" aria-labelledby="modal-warning-title" aria-hidden="true">
+		                                    <div class="modal-dialog" role="document">
+		                                        <div class="modal-content">
+		                                            <div class="modal-header">
+		                                                <h6 class="modal-title" id="modal-warning-title">Remover Usuário</h6>
+		                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                                                    <span aria-hidden="true">&times;</span>
+		                                                </button>
+		                                            </div>
+		                                            <div class="modal-body">
+		                                                <h5>Deseja realmente remover o Usuário?</h5>
+		                                            </div>
+		                                            <div class="modal-footer">
+		                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+		                                                <a class="btn btn-danger" th:href="@{/removerUsuario/{id} (id=${user.id})}">Sim</a>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                
+							<!--<a th:href="@{/detalheFuncionario/{id} (id=${user.id})}"><button type="button" class="btn btn-primary"> <i class="fa-solid fa-plus"></i> Estagiario</button></a>-->
+		
+						</td>
+						
+					</tr>
+				
+				</tbody >
+				
+			
+			</table>
+		
+
+		            <a class="btn btn-primary" href="/cadastroUsuario"><i class="fa-solid fa-plus"></i>Cadastrar usuário</a>
+		            
+		
+		
+		    </div>
+
+	    </section>
+</body>

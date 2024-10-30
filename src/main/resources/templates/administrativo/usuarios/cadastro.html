@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{administrativo/fragments/layout}"> 
+<html lang="pt-br">
+
+  <head>
+    <title>Página lista de usuários</title>
+  </head>
+  <body>			
+	    <section class="layout-content" layout:fragment="corpo">
+	    	    <!-- Mensagem de sucesso -->
+    <div th:if="${message}" class="alert alert-success">
+        <p th:text="${message}"></p>
+    </div>
+        <form action="/salvarUsuario" th:object="${user}" method="POST">
+        
+        
+        		            <div class="form-group">
+		              
+		              <div class="row">
+		                <div class="col-md-1">
+		                  <label for="id" >ID:</label>
+		                  <input type="text" readonly="true" class="form-control" id="id"  th:field="*{id}">
+		                </div>
+		               </div>
+		               
+		               <div class="row">
+		                <div class="col-md-6">
+			            <label for="fullname">Nome completo</label>
+	            		<input type="text" class="form-control" th:field="*{fullname}" id="fullname" name="fulname" required>
+		                </div>
+		                
+		               </div>
+		               
+		               <div class="row"> 
+		                <div class="col-md-6">
+			            <label for="email">Email</label>
+	            
+	            		<input type="email" class="form-control" th:field="*{email}" id="email" name="email" required>
+		                </div>
+						</div>
+						
+						<div class="row">
+		                <div class="col-md-6">
+			            <label for="password">Password</label>
+	            
+	            		<input type="password"  class="form-control" th:field="*{password}" id="password" name="password" required>
+		                </div>
+		
+		
+		              </div>
+		              
+		              						<div class="row">
+		                <div class="col-md-6">
+			            <label for="password">Password</label>
+	            
+	            		<input type="password"  class="form-control" th:field="*{password}" id="password" name="password" required>
+		                </div>
+		
+		
+		              </div>
+		              
+						<div class="row">
+		                <div class="col-md-6">
+			            <label for="password">Perfil</label>
+	       
+            			<select th:field="*{role}" class="form-control">
+            				<option value="ADMIN">ADMINISTRADOR</option>
+            				<option value="USER">GERENTE</option>
+            			</select>
+					</div>		
+		              </div>
+		       
+		            </div>
+		
+		            <a><button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>Salvar</button></a>
+		            <a class="btn btn-danger" href="/listarParceiro"><i class="fa-solid fa-list"></i>Listar Parceiros</a>
+
+			
+
+	    </section>
+</body>
+
+
+
+
+
+
+
+
+
